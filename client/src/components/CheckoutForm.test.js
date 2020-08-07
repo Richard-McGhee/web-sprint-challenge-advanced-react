@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, fireEvent, waitFor } from "@testing-library/react";
 import CheckoutForm from "./CheckoutForm";
 import App from '../App'
 
@@ -15,4 +15,20 @@ test("form header renders", () => {
     expect(getByText(/checkout form/i)).toBeInTheDocument()
 });
 
-test("form shows success message on submit with form details", () => {});
+test("form shows success message on submit with form details", async () => {
+    const { getByLabelText, getByRole, getByTestId } = render(<CheckoutForm />)
+    const fnameInput = getByLabelText(/first name/i)
+    const submitButton = getByRole("button")
+    // expect(fnameInput).toBeInTheDocument()
+    // expect(submitButton).toBeInTheDocument()
+
+    fireEvent.change(fnameInput, {target: {value: "A name to test"}})
+    expect(fnameInput.value).toBe("A name to test")
+    fireEvent.click(submitButton)
+
+    
+    expect(await waitFor(() => {
+        const successMessage = getByTestId("successMessage")
+        return successMessage
+    })).toBeInTheDocument()
+});
