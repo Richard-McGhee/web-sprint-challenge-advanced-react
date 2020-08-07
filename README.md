@@ -30,13 +30,28 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Explain how to build stateful class components.
 
+You need to setup a react class by extending the base react class known simply as Component.
+
 2. Describe the different phases of the component lifecycle.
+
+mounting phase - the component renders for the first time, displaying and pulling in all relevant data, as well as data setup to be run on the ininital mount
+
+updating phase - the component re-renders whenever state and/or props change or when certain lifecycle methods are invoked
+
+unmounting phase - the component is "destroyed" when it is no longer needed because the browser has moved away from the relevant window
 
 3. Demonstrate an understanding of class component lifecycle methods.
 
+One of the most important methods is component did mount or CDM
+CDM fires when the component is first mounted and only then. This is useful for making API calls to set data into our state. This is very similar to using an effect hook with an empty dependency array.
+
 4. Define stateful logic.
 
+Logic i.e. instructions that are applied to states being maintained by components. Think of functions that add or remove data from state or even hooks that can be used to create new states and give certain control over them.
+
 5. Describe how to test a React component with React Testing Library.
+
+Using the AAA, Arrange-Act-Assert, you can setup test to look for certain elements in the document, then tell the library what to do with those elements, and make educated guesses as to what will happen when those tests are run. This can be easily done with the rtl by installing it and a few other dependencies into your react app.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
